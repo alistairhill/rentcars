@@ -4,7 +4,34 @@
   <title>Rent Cars</title>
   <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
-<body ng-app="rentCars" ng-controller="searchController">
+<body ng-app="rentCars">
+  <section class="rent-cars" ng-controller="searchController">
+    <article class="rent-cars-search">
+      <form name="carSearchForm" ng-submit="carSearchForm.$valid" novalidate>
+        <div class="rent-cars-search-destination">
+          <input type="text" name="destination" placeholder="Enter destination" />
+        </div>
+        <div class="rent-cars-search-start">
+          <input type="text" name="startDate" placeholder="Pick up date" />
+        </div>
+        <div class="rent-cars-search-start-time">
+          <input type="text" name="pickUpTime" placeholder="Pick up Time" />
+        </div>
+        <div class="rent-cars-search-end">
+          <input type="text" name="endDate" placeholder="Drop off date" />
+        </div>
+        <div class="rent-cars-search-end-time">
+          <input type="text" name="dropOffTime" placeholder="Drop off Time" />
+        </div>
+        <div>
+          <button name="submit" type="submit">Search!</button>
+        </div>
+      </form>
+    </article>
+    <article class="rent-cars-results">
+
+    </article>
+  </section>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
   <script src="scripts/app.js"></script>
