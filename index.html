@@ -7,9 +7,9 @@
 <body ng-app="rentCars">
   <section class="rent-cars" ng-controller="searchController">
     <article class="rent-cars-search">
-      <form name="carSearchForm" ng-submit="carSearchForm.$valid" novalidate>
+      <form name="carSearchForm" ng-submit="carSearchForm.$valid && searchRentalCars()" novalidate>
         <div class="rent-cars-search-destination">
-          <input type="text" name="destination" placeholder="Enter destination" />
+          <input ng-model="searchInput.dest" type="text" name="destination" placeholder="Enter destination" />
         </div>
         <div class="rent-cars-search-start">
           <input type="text" name="startDate" placeholder="Pick up date" />
