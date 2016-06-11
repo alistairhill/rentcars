@@ -28,7 +28,6 @@
       searchSerice.getCarRentals(searchInput, apiConstant).then(function successHandler(response) {
         if (response.StatusDesc === "success") {
           $scope.carResults = parseResults.addCarType(response);
-
         } else {
           console.log(response.Errors)
         }

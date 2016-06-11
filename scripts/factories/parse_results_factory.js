@@ -16,6 +16,7 @@
 
             // add car type attributes to each rental car result
             results[i].CarTypeName = carType.CarTypeName;
+            console.log(results[i].CarTypeCode);
             results[i].PossibleFeatures = carType.PossibleFeatures;
             results[i].PossibleModels = carType.PossibleModels;
             results[i].TypicalSeating = carType.TypicalSeating;
