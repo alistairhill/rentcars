@@ -1,0 +1,52 @@
+body {
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+section.rent-cars {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.car-result-image,
+.car-result-info,
+.car-result-cost,
+.rent-cars-search,
+.rent-cars-results {
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid black;
+}
+
+
+article.rent-cars-search {
+  width: 20%;
+}
+
+article.rent-cars-results {
+  width: 60%;
+}
+
+.rent-cars-results ul{
+  padding: 0px;
+}
+
+.rent-cars-results ul > li {
+  list-style: none;
+}
+
+li.car-result {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.car-result-image {
+  width: 25%;
+}
+.car-result-info {
+  width: 40%;
+}
+.car-result-cost {
+  width: 25%;
+}

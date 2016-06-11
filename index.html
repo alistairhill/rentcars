@@ -24,12 +24,64 @@
           <input type="text" name="dropOffTime" placeholder="Drop off Time" />
         </div>
         <div>
-          <button name="submit" type="submit">Search!</button>
+          <button name="submit" type="submit">
+            Search!
+          </button>
         </div>
       </form>
     </article>
     <article class="rent-cars-results">
-
+    <ul>
+      <li ng-repeat="car in carResults" class="car-result">
+        <div class="car-result-image">
+          <img src="" alt="car image">
+        </div>
+        <div class="car-result-info">
+          <div>
+            <span>Car type: </span>
+            <span>{{car.CarTypeName}}</span>
+          </div>
+          <div>
+            <span>Car features: </span>
+            <span>{{car.PossibleFeatures}}</span>
+          </div>
+          <div>
+            <span>Possible models: </span>
+            <span>{{car.PossibleModels}}</span>
+          </div>
+          <div>
+            <span>Typical seating: </span>
+            <span>{{car.TypicalSeating}}</span>
+          </div>
+        </div>
+        <div class="car-result-cost">
+          <div>
+            <span>Daily rate: </span>
+            <span>$({{car.CurrencyCode}})</span>
+            <span>{{car.DailyRate}}</span>
+          </div>
+          <div>
+            <span>Sub total: </span>
+            <span>$({{car.CurrencyCode}})</span>
+            <span>{{car.SubTotal}}</span>
+          </div>
+          <div>
+          <div>
+            <span>Taxes & fees: </span>
+            <span>$({{car.CurrencyCode}})</span>
+            <span>{{car.TaxesAndFees}}</span>
+          </div>
+          <div>
+            <span>Total: </span>
+            <span>$({{car.CurrencyCode}})</span>
+            <span>{{car.TotalPrice}}</span>
+          </div>
+          <div>
+            <button type="button">Pay Now!</button>
+          </div>
+        </div>
+      </li>
+    </ul>
     </article>
   </section>
 
@@ -38,5 +90,6 @@
   <script src="scripts/controllers/search_controller.js"></script>
   <script src="scripts/constants/api_constant.js"></script>
   <script src="scripts/services/search_service.js"></script>
+  <script src="scripts/factories/parse_results_factory.js"></script>
 </body>
 </html>
