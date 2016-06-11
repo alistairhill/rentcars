@@ -4,12 +4,14 @@
   angular.module("rentCars")
   .service("searchSerice", function($q, $http, apiConstant, $httpParamSerializer) {
 
-    this.getCarRentals = function() {
+    this.getCarRentals = function(searchInput) {
       var deferred = $q.defer();
-      var url = "http://api.hotwire.com/v1/search/car?&dest=LAX&startdate=01/20/2017&enddate=01/23/2017&pickuptime=10:00&dropofftime=13:30";
+      var url = "http://api.hotwire.com/v1/search/car?";
 
+      searchInput = $httpParamSerializer(searchInput);
       apiConstant = $httpParamSerializer(apiConstant);
-      url = (url + "&" + apiConstant);
+
+      url = (url + apiConstant + "&" + searchInput);
 
       $http.jsonp(url)
         .success(function(data) {
