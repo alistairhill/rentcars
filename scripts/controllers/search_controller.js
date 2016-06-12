@@ -13,21 +13,24 @@
 
     function loadDefaultSearchInput() {
       $scope.searchInput.dest = "";
-      // setting current date in for startdate in accepted format
-      $scope.searchInput.startdate = updateTimeFormat(getDate(), dateFormat);
+      // setting current date for startdate in accepted format
+      $scope.searchInput.startdate = updateTimeFormat(currentTimeOffset(), dateFormat);
       // enddate needs to be at least 24 hours ahead of current date
-      $scope.searchInput.enddate = updateTimeFormat(getDate(24), dateFormat);
+      $scope.searchInput.enddate = updateTimeFormat(currentTimeOffset(24), dateFormat);
       // pickuptime needs to be 3 hours ahead of current time if on current date
-      $scope.searchInput.pickuptime = updateTimeFormat(getDate(3), timeFormat);
-      $scope.searchInput.dropofftime = "12:00";
+      $scope.searchInput.pickuptime = updateTimeFormat(currentTimeOffset(), timeFormat);
+      $scope.searchInput.dropofftime = updateTimeFormat(currentTimeOffset(), timeFormat);
     }
 
     loadDefaultSearchInput();
 
-    function getDate(addHours) {
+    function currentTimeOffset(addHours) {
       addHours = addHours || 0;
+
+      // adding required 3 hours time ahead by default
+      var bookingHoursAhead = 3;
       var currentTime = new Date();
-      return currentTime.setHours(currentTime.getHours() + addHours)
+      return currentTime.setHours(currentTime.getHours() + bookingHoursAhead + addHours)
     }
 
     function updateTimeFormat(time, format) {
