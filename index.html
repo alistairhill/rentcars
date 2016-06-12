@@ -5,6 +5,10 @@
   <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 <body ng-app="rentCars">
+  <section class="rent-cars-background">
+  </section>
+  <section class="rent-cars-background-overlay">
+  </section>
   <section class="rent-cars" ng-controller="searchController">
     <article class="rent-cars-search">
       <form name="carSearchForm" ng-submit="carSearchForm.$valid && searchRentalCars()" novalidate>
@@ -24,7 +28,7 @@
           <input ng-model="searchInput.dropofftime" type="text" name="dropOffTime" placeholder="Drop off Time" />
         </div>
         <div>
-          <button name="submit" type="submit">
+          <button class="rent-cars-button" name="submit" type="submit">
             Search!
           </button>
         </div>
@@ -54,29 +58,21 @@
             </div>
           </div>
           <div class="car-result-cost">
-            <div>
-              <span>Daily rate: </span>
-              <span>$({{car.CurrencyCode}})</span>
-              <span>{{car.DailyRate}}</span>
+            <div class="header">
+              <h2 class="daily-rate-title">BEST DAILY RATE</h2>
+              <span class="daily-rate-price">${{car.DailyRate}}</span>
+              <span class="currency-code">{{car.CurrencyCode}}</span>
             </div>
             <div>
-              <span>Sub total: </span>
-              <span>$({{car.CurrencyCode}})</span>
-              <span>{{car.SubTotal}}</span>
+              <span class="fees">Fees: ${{car.TaxesAndFees}}</span>
+              <span class="currency-code">{{car.CurrencyCode}}</span>
             </div>
             <div>
-            <div>
-              <span>fees: </span>
-              <span>$({{car.CurrencyCode}})</span>
-              <span>{{car.TaxesAndFees}}</span>
+              <span class="total">Total: ${{car.TotalPrice}}</span>
+              <span class="currency-code">{{car.CurrencyCode}}</span>
             </div>
             <div>
-              <span>Total: </span>
-              <span>$({{car.CurrencyCode}})</span>
-              <span>{{car.TotalPrice}}</span>
-            </div>
-            <div>
-              <button type="button">Pay Now!</button>
+              <a class="pay-now-button rent-cars-button" href="{{car.TypicalSeating}}">Buy Now!</a>
             </div>
           </div>
         </li>

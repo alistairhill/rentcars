@@ -2,22 +2,63 @@ body {
   font-size: 16px;
   padding: 0;
   margin: 0;
+  font-family: helvetica;
+}
+
+section.rent-cars-background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/car_background.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  background-attachment: scroll;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+section.rent-cars-background-overlay {
+  background: rgba(0,0,0,0.72);
+    position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
 section.rent-cars {
-  width: 90%;
-  margin: 20px auto;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 0;
 }
 
-.rent-cars-search,
-.rent-cars-results {
-  display: inline-block;
-  border: 1px solid black;
+article.rent-cars-search,
+article.rent-cars-results {
+  position: relative;
   vertical-align: top;
+  background: rgba(0,0,0,0.72);
+  padding: 10px;
+  border-radius: 4px;
+  width: 75%;
+  max-width: 1200px;
+  min-width: 680px;
+  margin: 10px auto;
+  display: table;
+  border: 1px solid #FFF;
 }
 
 article.rent-cars-search {
-  width: 20%;
+
+}
+
+article.rent-cars-results {
+  /*background-color: #FFF;*/
+  display: none;
+}
+
+article.rent-cars-results .loading {
+  /*background-color: #FFF;*/
+  display: table;
 }
 
 .rent-cars-search-destination,
@@ -32,12 +73,12 @@ article.rent-cars-search {
   display: inline-block;
 }
 
-article.rent-cars-results {
-  width: 60%;
-}
-
-.rent-cars-results ul{
-  padding: 0px;
+.rent-cars-results ul {
+  position: relative;
+  display: table;
+  padding: 15px;
+  width: 100%;
+  border-radius: 4px;
 }
 
 .rent-cars-results ul > li {
@@ -76,8 +117,45 @@ li.car-result {
   display: table-cell;
   padding: 2px;
   width: 25%;
-  border: 1px solid black;
+  border: 1px solid #d4cfcf;
+  border-radius: 4px;
+}
 
+.rent-cars-button {
+  border: 1px solid #d4cfcf;
+  background-color: #24BD6D;
+  color: #FFF;
+  outline: none;
+  padding: 5px 20px;
+  font-size: 0.8em;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+.car-result-cost .header {
+  margin: 0 0 5px;
+}
+.car-result-cost div h2.daily-rate-title {
+  font-size: 1em;
+  margin: 0 0 2px;
+}
+.car-result-cost div span.daily-rate-title {
+  display: block;
+}
+.car-result-cost div span.daily-rate-price {
+  font-size: 1.1em;
+}
+.car-result-cost div span.currency-code,
+.car-result-cost div span.fees {
+  font-size: 0.6em;
+  color: #827d7d;
+}
+.car-result-cost div span.total {
+  font-size: 0.9em;
+}
+.pay-now-button {
+  display: inline-block;
+  margin: 0 auto;
 }
 
 [ng\:cloak], [ng-cloak], .ng-cloak {
