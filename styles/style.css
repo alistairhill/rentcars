@@ -3,6 +3,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: helvetica;
+
+    border-collapse: collapse;
 }
 
 section.rent-cars-background {
@@ -41,7 +43,7 @@ article.rent-cars-results {
   border-radius: 4px;
   width: 75%;
   max-width: 1200px;
-  min-width: 680px;
+  min-width: 480px;
   margin: 10px auto;
   display: table;
   border: 1px solid #FFF;
@@ -52,6 +54,7 @@ article.rent-cars-search {
 }
 article.rent-cars-search .logo {
     /*width: 20%;*/
+    vertical-align: top;
     width: 150px;
     height: 80px;
     background-image: url("../images/car_logo.png");
@@ -65,6 +68,12 @@ article.rent-cars-search form {
   vertical-align: middle;
 }
 
+article.rent-cars-search form div {
+  display: inline-block;
+  /*border: 1px solid white;*/
+  margin: 4px 2px;
+}
+
 article.rent-cars-search form div label {
   display: table-cell;
   font-size: 0.8em;
@@ -72,13 +81,16 @@ article.rent-cars-search form div label {
   padding: 2px 0px;
 }
 article.rent-cars-search form div input {
-  padding: 6px;
+  padding: 7px;
   font-size: 0.7em;
   color: #111;
+  border-radius: 2px;
+  border: 1px solid #D4CFCF;
+  border: none;
 }
 
 article.rent-cars-search form div input.destination {
-  width: 180px;
+  width: 170px;
 }
 article.rent-cars-search form div input.date {
   width: 90px;
@@ -87,11 +99,19 @@ article.rent-cars-search form div input.time {
   width: 60px;
 }
 
+article.rent-cars-search form div.search-button-container {
+}
 
-article.rent-cars-search form div {
-  display: inline-block;
-  /*border: 1px solid white;*/
-  margin: auto 2px;
+article.rent-cars-search form div span.error {
+  display: block;
+  /*background-color: #CC0103;*/
+  background-color: #B33A3A;
+  color: #FFF;
+  text-align: center;
+  font-size: 0.8em;
+  border-radius: 2px;
+  padding: 4px;
+  margin: 4px;
 }
 
 article.rent-cars-results {
@@ -165,14 +185,15 @@ li.car-result {
 }
 
 .rent-cars-button {
-  border: 1px solid #d4cfcf;
+  /*border: 1px solid #D4CFCF;*/
+  border: none;
   background-color: #24BD6D;
   color: #FFF;
   outline: none;
-  padding: 5px 20px;
+  padding: 6px 20px;
   font-size: 0.8em;
   text-decoration: none;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 .rent-cars-button:hover {
   cursor: pointer;

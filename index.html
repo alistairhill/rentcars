@@ -16,17 +16,32 @@
       <form name="carSearchForm" ng-submit="carSearchForm.$valid && searchRentalCars()" novalidate>
         <div class="destination-container">
           <label for="destination">Destination</label>
-          <input class="destination" ng-model="searchInput.dest" type="text" name="destination" placeholder="LAX, or San Francisco, CA etc." />
+          <input class="destination" ng-model="searchInput.dest" type="text" required name="destination" placeholder="LAX, or San Francisco, CA etc." />
+          <span class="error" ng-show="carSearchForm.destination.$error.required && carSearchForm.$submitted">
+            A destinaton is required
+          </span>
         </div>
         <div class="start-time-container">
           <label for="startDate">Pick up date</label>
-          <input class="date" ng-model="searchInput.startdate" type="text" name="startDate" placeholder="mm/dd/yyyy" />
-          <input class="time" ng-model="searchInput.pickuptime" type="text" name="pickUpTime" placeholder="00:00" />
+          <input class="date" ng-model="searchInput.startdate" type="text" required name="startDate" placeholder="mm/dd/yyyy" />
+          <input class="time" ng-model="searchInput.pickuptime" type="text" required name="pickUpTime" placeholder="00:00" />
+          <span class="error" ng-show="carSearchForm.startDate.$error.required && carSearchForm.$submitted">
+            Start date is required
+          </span>
+          <span class="error" ng-show="carSearchForm.pickUpTime.$error.required && carSearchForm.$submitted">
+            Start time is required
+          </span>
         </div>
         <div class="end-time-container">
           <label for="endDate">Drop off date</label>
           <input class="date" ng-model="searchInput.enddate" type="text" name="endDate" placeholder="mm/dd/yyyy" />
           <input class="time" ng-model="searchInput.dropofftime" type="text" name="dropOffTime" placeholder="00:00" />
+          <span class="error" ng-show="carSearchForm.endDate.$error.required && carSearchForm.$submitted">
+            End date is required
+          </span>
+          <span class="error" ng-show="carSearchForm.dropOffTime.$error.required && carSearchForm.$submitted">
+            End time is required
+          </span>
         </div>
         <div class="search-button-container">
           <button class="rent-cars-button" name="submit" type="submit">
