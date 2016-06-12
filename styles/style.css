@@ -19,7 +19,6 @@ section.rent-cars {
   border: 1px solid black;
 }
 
-
 article.rent-cars-search {
   width: 20%;
 }
@@ -44,9 +43,21 @@ li.car-result {
 .car-result-image {
   width: 25%;
 }
+
 .car-result-info {
+  padding: 2px;
   width: 40%;
 }
+.car-result-info div h2 {
+  font-size: 1.2em;
+  margin: 4px 0;
+}
+
 .car-result-cost {
+  padding: 2px;
   width: 25%;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
 }

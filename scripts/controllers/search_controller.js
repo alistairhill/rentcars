@@ -11,8 +11,8 @@
 
     function searchInputDefaults() {
       $scope.searchInput.dest = "";
-      $scope.searchInput.startdate = "06/11/2016";
-      $scope.searchInput.enddate = "06/12/2016";
+      $scope.searchInput.startdate = "06/12/2016";
+      $scope.searchInput.enddate = "06/13/2016";
       $scope.searchInput.pickuptime = "16:00";
       $scope.searchInput.dropofftime = "12:00";
     }

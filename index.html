@@ -32,14 +32,13 @@
     </article>
     <article class="rent-cars-results">
     <ul>
-      <li ng-repeat="car in carResults" class="car-result">
+      <li ng-cloak ng-repeat="car in carResults" class="car-result">
         <div class="car-result-image">
-          <img ng-src="images/{{car.CarTypeCode}}.png" alt="car image">
+          <img ng-src="images/{{car.CarTypeCode}}.png" onerror="this.src='images/XXAR.png'" alt="car image">
         </div>
         <div class="car-result-info">
           <div>
-            <span>Car type: </span>
-            <span>{{car.CarTypeName}}</span>
+            <h2>{{car.CarTypeName}}</h2>
           </div>
           <div>
             <span>Car features: </span>
@@ -67,7 +66,7 @@
           </div>
           <div>
           <div>
-            <span>Taxes & fees: </span>
+            <span>fees: </span>
             <span>$({{car.CurrencyCode}})</span>
             <span>{{car.TaxesAndFees}}</span>
           </div>
