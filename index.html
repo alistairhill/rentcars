@@ -11,23 +11,24 @@
   </section>
   <section class="rent-cars" ng-controller="searchController">
     <article class="rent-cars-search">
+      <div class="logo">
+      </div>
       <form name="carSearchForm" ng-submit="carSearchForm.$valid && searchRentalCars()" novalidate>
-        <div class="rent-cars-search-destination">
-          <input ng-model="searchInput.dest" type="text" name="destination" placeholder="Enter destination" />
+        <div class="destination-container">
+          <label for="destination">Destination</label>
+          <input class="destination" ng-model="searchInput.dest" type="text" name="destination" placeholder="LAX, or San Francisco, CA etc." />
         </div>
-        <div class="rent-cars-search-start">
-          <input ng-model="searchInput.startdate" type="text" name="startDate" placeholder="Pick up date" />
+        <div class="start-time-container">
+          <label for="startDate">Pick up date</label>
+          <input class="date" ng-model="searchInput.startdate" type="text" name="startDate" placeholder="mm/dd/yyyy" />
+          <input class="time" ng-model="searchInput.pickuptime" type="text" name="pickUpTime" placeholder="00:00" />
         </div>
-        <div class="rent-cars-search-start-time">
-          <input ng-model="searchInput.pickuptime" type="text" name="pickUpTime" placeholder="Pick up Time" />
+        <div class="end-time-container">
+          <label for="endDate">Drop off date</label>
+          <input class="date" ng-model="searchInput.enddate" type="text" name="endDate" placeholder="mm/dd/yyyy" />
+          <input class="time" ng-model="searchInput.dropofftime" type="text" name="dropOffTime" placeholder="00:00" />
         </div>
-        <div class="rent-cars-search-end">
-          <input ng-model="searchInput.enddate" type="text" name="endDate" placeholder="Drop off date" />
-        </div>
-        <div class="rent-cars-search-end-time">
-          <input ng-model="searchInput.dropofftime" type="text" name="dropOffTime" placeholder="Drop off Time" />
-        </div>
-        <div>
+        <div class="search-button-container">
           <button class="rent-cars-button" name="submit" type="submit">
             Search!
           </button>
