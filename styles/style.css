@@ -9,18 +9,27 @@ section.rent-cars {
   margin: 20px auto;
 }
 
-.car-result-image,
-.car-result-info,
-.car-result-cost,
 .rent-cars-search,
 .rent-cars-results {
   display: inline-block;
-  vertical-align: top;
   border: 1px solid black;
+  vertical-align: top;
 }
 
 article.rent-cars-search {
   width: 20%;
+}
+
+.rent-cars-search-destination,
+.rent-cars-search-destination input {
+  width: auto;
+}
+
+.rent-cars-search-start,
+.rent-cars-search-start-time,
+.rent-cars-search-end,
+.rent-cars-search-end-time {
+  display: inline-block;
 }
 
 article.rent-cars-results {
@@ -38,24 +47,37 @@ article.rent-cars-results {
 li.car-result {
   width: 90%;
   margin: 20px auto;
+  display: table;
 }
 
 .car-result-image {
   width: 25%;
+  display: table-cell;
+  vertical-align: middle;
+  border: 1px solid black;
+
+}
+.car-result-image img {
+  width: 100%;
 }
 
 .car-result-info {
+  display: table-cell;
   padding: 2px;
   width: 40%;
+  border: 1px solid black;
 }
 .car-result-info div h2 {
   font-size: 1.2em;
-  margin: 4px 0;
+  margin: 0 0 4px;
 }
 
 .car-result-cost {
+  display: table-cell;
   padding: 2px;
   width: 25%;
+  border: 1px solid black;
+
 }
 
 [ng\:cloak], [ng-cloak], .ng-cloak {

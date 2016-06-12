@@ -12,16 +12,16 @@
           <input ng-model="searchInput.dest" type="text" name="destination" placeholder="Enter destination" />
         </div>
         <div class="rent-cars-search-start">
-          <input type="text" name="startDate" placeholder="Pick up date" />
+          <input ng-model="searchInput.startdate" type="text" name="startDate" placeholder="Pick up date" />
         </div>
         <div class="rent-cars-search-start-time">
-          <input type="text" name="pickUpTime" placeholder="Pick up Time" />
+          <input ng-model="searchInput.pickuptime" type="text" name="pickUpTime" placeholder="Pick up Time" />
         </div>
         <div class="rent-cars-search-end">
-          <input type="text" name="endDate" placeholder="Drop off date" />
+          <input ng-model="searchInput.enddate" type="text" name="endDate" placeholder="Drop off date" />
         </div>
         <div class="rent-cars-search-end-time">
-          <input type="text" name="dropOffTime" placeholder="Drop off Time" />
+          <input ng-model="searchInput.dropofftime" type="text" name="dropOffTime" placeholder="Drop off Time" />
         </div>
         <div>
           <button name="submit" type="submit">
@@ -31,56 +31,56 @@
       </form>
     </article>
     <article class="rent-cars-results">
-    <ul>
-      <li ng-cloak ng-repeat="car in carResults" class="car-result">
-        <div class="car-result-image">
-          <img ng-src="images/{{car.CarTypeCode}}.png" onerror="this.src='images/XXAR.png'" alt="car image">
-        </div>
-        <div class="car-result-info">
-          <div>
-            <h2>{{car.CarTypeName}}</h2>
+      <ul>
+        <li ng-cloak ng-repeat="car in carResults" class="car-result">
+          <div class="car-result-image">
+            <img ng-src="images/{{car.CarTypeCode}}.png" onerror="this.src='images/XXAR.png'" alt="car image">
           </div>
-          <div>
-            <span>Car features: </span>
-            <span>{{car.PossibleFeatures}}</span>
+          <div class="car-result-info">
+            <div>
+              <h2>{{car.CarTypeName}}</h2>
+            </div>
+            <div>
+              <span>Car features: </span>
+              <span>{{car.PossibleFeatures}}</span>
+            </div>
+            <div>
+              <span>Possible models: </span>
+              <span>{{car.PossibleModels}}</span>
+            </div>
+            <div>
+              <span>Typical seating: </span>
+              <span>{{car.TypicalSeating}}</span>
+            </div>
           </div>
-          <div>
-            <span>Possible models: </span>
-            <span>{{car.PossibleModels}}</span>
+          <div class="car-result-cost">
+            <div>
+              <span>Daily rate: </span>
+              <span>$({{car.CurrencyCode}})</span>
+              <span>{{car.DailyRate}}</span>
+            </div>
+            <div>
+              <span>Sub total: </span>
+              <span>$({{car.CurrencyCode}})</span>
+              <span>{{car.SubTotal}}</span>
+            </div>
+            <div>
+            <div>
+              <span>fees: </span>
+              <span>$({{car.CurrencyCode}})</span>
+              <span>{{car.TaxesAndFees}}</span>
+            </div>
+            <div>
+              <span>Total: </span>
+              <span>$({{car.CurrencyCode}})</span>
+              <span>{{car.TotalPrice}}</span>
+            </div>
+            <div>
+              <button type="button">Pay Now!</button>
+            </div>
           </div>
-          <div>
-            <span>Typical seating: </span>
-            <span>{{car.TypicalSeating}}</span>
-          </div>
-        </div>
-        <div class="car-result-cost">
-          <div>
-            <span>Daily rate: </span>
-            <span>$({{car.CurrencyCode}})</span>
-            <span>{{car.DailyRate}}</span>
-          </div>
-          <div>
-            <span>Sub total: </span>
-            <span>$({{car.CurrencyCode}})</span>
-            <span>{{car.SubTotal}}</span>
-          </div>
-          <div>
-          <div>
-            <span>fees: </span>
-            <span>$({{car.CurrencyCode}})</span>
-            <span>{{car.TaxesAndFees}}</span>
-          </div>
-          <div>
-            <span>Total: </span>
-            <span>$({{car.CurrencyCode}})</span>
-            <span>{{car.TotalPrice}}</span>
-          </div>
-          <div>
-            <button type="button">Pay Now!</button>
-          </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
     </article>
   </section>
 

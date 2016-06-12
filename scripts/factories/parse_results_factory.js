@@ -7,8 +7,6 @@
       addCarType: function(data) {
         var results = data.Result;
         var carTypes = data.MetaData.CarMetaData.CarTypes;
-        console.log(carTypes)
-        console.log(results)
 
         if (carTypes && results) {
           for (var i = 0; i < results.length; i++) {
