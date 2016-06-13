@@ -8,6 +8,7 @@
     $scope.carResults = [];
     var dateFormat = "MM/dd/yyyy";
     var timeFormat = "HH:00";
+    $scope.loaded = false;
 
     $scope.searchRentalCars = searchRentalCars;
 
@@ -39,12 +40,19 @@
 
     function searchRentalCars() {
       var searchInput = $scope.searchInput;
+      $scope.loaded = false;
+      $scope.loading = true;
       $scope.carResults = [];
 
       searchSerice.getCarRentals(searchInput, apiConstant).then(function successHandler(response) {
-        if (response.StatusDesc === "success") {
+        $scope.loading = false;
+        $scope.loaded = true;
+
+        if (response.StatusCode === "0") {
           console.log(response);
           $scope.carResults = parseResults.addCarType(response);
+        } else if (response.StatusCode === "100") {
+          console.log(response.StatusDesc)
         } else {
           console.log(response.Errors)
         }

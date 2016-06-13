@@ -7,70 +7,76 @@
 <body ng-app="rentCars">
   <section class="rent-cars-background">
   </section>
-  <section class="rent-cars-background-overlay">
-  </section>
+<!--   <section class="rent-cars-background-overlay">
+  </section> -->
   <section class="rent-cars" ng-controller="searchController">
     <article class="rent-cars-search">
-      <div class="logo">
+      <div class="logo-container">
+        <div class="logo">
+        </div>
       </div>
-      <form name="carSearchForm" ng-submit="carSearchForm.$valid && searchRentalCars()" novalidate>
-        <div class="destination-container">
-          <label for="destination">Destination</label>
-          <input class="destination" ng-model="searchInput.dest" type="text" required name="destination" placeholder="LAX, or San Francisco, CA etc." />
-          <span class="error" ng-show="carSearchForm.destination.$error.required && carSearchForm.$submitted">
-            A destinaton is required
-          </span>
-        </div>
-        <div class="start-time-container">
-          <label for="startDate">Pick up date</label>
-          <input class="date" ng-model="searchInput.startdate" type="text" required name="startDate" placeholder="mm/dd/yyyy" />
-          <input class="time" ng-model="searchInput.pickuptime" type="text" required name="pickUpTime" placeholder="00:00" />
-          <span class="error" ng-show="carSearchForm.startDate.$error.required && carSearchForm.$submitted">
-            Start date is required
-          </span>
-          <span class="error" ng-show="carSearchForm.pickUpTime.$error.required && carSearchForm.$submitted">
-            Start time is required
-          </span>
-        </div>
-        <div class="end-time-container">
-          <label for="endDate">Drop off date</label>
-          <input class="date" ng-model="searchInput.enddate" type="text" name="endDate" placeholder="mm/dd/yyyy" />
-          <input class="time" ng-model="searchInput.dropofftime" type="text" name="dropOffTime" placeholder="00:00" />
-          <span class="error" ng-show="carSearchForm.endDate.$error.required && carSearchForm.$submitted">
-            End date is required
-          </span>
-          <span class="error" ng-show="carSearchForm.dropOffTime.$error.required && carSearchForm.$submitted">
-            End time is required
-          </span>
-        </div>
-        <div class="search-button-container">
-          <button class="rent-cars-button" name="submit" type="submit">
-            Search!
-          </button>
-        </div>
-      </form>
+      <div class="form-container">
+        <form name="carSearchForm" ng-submit="carSearchForm.$valid && searchRentalCars()" novalidate>
+          <div class="destination-container">
+            <label for="destination">Destination</label>
+            <input class="destination" ng-model="searchInput.dest" type="text" required name="destination" placeholder="LAX, or San Francisco, CA etc." />
+            <span ng-cloak class="error" ng-show="carSearchForm.destination.$error.required && carSearchForm.$submitted">
+              A destinaton is required
+            </span>
+          </div>
+          <div class="start-time-container">
+            <label for="startDate">Pick up date</label>
+            <input class="date" ng-model="searchInput.startdate" type="text" required name="startDate" placeholder="mm/dd/yyyy" />
+            <input class="time" ng-model="searchInput.pickuptime" type="text" required name="pickUpTime" placeholder="00:00" />
+            <span ng-cloak class="error" ng-show="carSearchForm.startDate.$error.required && carSearchForm.$submitted">
+              Start date is required
+            </span>
+            <span ng-cloak class="error" ng-show="carSearchForm.pickUpTime.$error.required && carSearchForm.$submitted">
+              Start time is required
+            </span>
+          </div>
+          <div class="end-time-container">
+            <label for="endDate">Drop off date</label>
+            <input class="date" ng-model="searchInput.enddate" type="text" required name="endDate" placeholder="mm/dd/yyyy" />
+            <input class="time" ng-model="searchInput.dropofftime" type="text" required name="dropOffTime" placeholder="00:00" />
+            <span ng-cloak class="error" ng-show="carSearchForm.endDate.$error.required && carSearchForm.$submitted">
+              End date is required
+            </span>
+            <span ng-cloak class="error" ng-show="carSearchForm.dropOffTime.$error.required && carSearchForm.$submitted">
+              End time is required
+            </span>
+          </div>
+          <div class="search-button-container">
+            <button class="rent-cars-button" name="submit" type="submit">
+              Search!
+            </button>
+          </div>
+        </form>
+      </div>
     </article>
-    <article class="rent-cars-results">
-      <ul>
+
+    <article class="rent-cars-results" ng-class="{'loading': loading}">
+      <div ng-class="{'loading-container': loading}">
+        <div ng-class="{'loading-image': loading}">
+        </div>
+      </div>
+      <ul ng-class="{'available-cars': loaded}">
         <li ng-cloak ng-repeat="car in carResults" class="car-result">
           <div class="car-result-image">
             <img ng-src="images/{{car.CarTypeCode}}.png" onerror="this.src='images/XXAR.png'" alt="car image">
           </div>
           <div class="car-result-info">
-            <div>
-              <h2>{{car.CarTypeName}}</h2>
+            <div class="header">
+              <h2 class="car-type">{{car.CarTypeName}}</h2>
             </div>
             <div>
-              <span>Car features: </span>
-              <span>{{car.PossibleFeatures}}</span>
+              <span>Car features: {{car.PossibleFeatures}}</span>
             </div>
             <div>
-              <span>Possible models: </span>
-              <span>{{car.PossibleModels}}</span>
+              <span>Possible models: {{car.PossibleModels}}</span>
             </div>
             <div>
-              <span>Typical seating: </span>
-              <span>{{car.TypicalSeating}}</span>
+              <span>Typical seating: {{car.TypicalSeating}}</span>
             </div>
           </div>
           <div class="car-result-cost">
