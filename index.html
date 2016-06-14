@@ -26,8 +26,9 @@
           </div>
           <div class="start-time-container">
             <label for="startDate">Pick up date</label>
-            <input class="date" ng-model="searchInput.startdate" type="text" required name="startDate" placeholder="mm/dd/yyyy" />
-            <input class="time" ng-model="searchInput.pickuptime" type="text" required name="pickUpTime" placeholder="00:00" />
+            <input class="date" ng-model="searchInput.startdate" min="{{minDate | date:'yyyy-MM-dd'}}" type="date" required name="startDate" />
+            <select class="dropdown" ng-options="hour as hour.label for hour in hoursList track by hour.time" ng-model="searchInput.pickuptime">
+            </select>
             <span ng-cloak class="error" ng-show="carSearchForm.startDate.$error.required && carSearchForm.$submitted">
               Start date is required
             </span>
@@ -37,10 +38,14 @@
           </div>
           <div class="end-time-container">
             <label for="endDate">Drop off date</label>
-            <input class="date" ng-model="searchInput.enddate" type="text" required name="endDate" placeholder="mm/dd/yyyy" />
-            <input class="time" ng-model="searchInput.dropofftime" type="text" required name="dropOffTime" placeholder="00:00" />
+            <input class="date" ng-model="searchInput.enddate" min="{{searchInput.startdate | date:'yyyy-MM-dd'}}" type="date" required name="endDate" />
+            <select class="dropdown" ng-options="hour as hour.label for hour in hoursList track by hour.time" ng-model="searchInput.dropofftime">
+            </select>
             <span ng-cloak class="error" ng-show="carSearchForm.endDate.$error.required && carSearchForm.$submitted">
               End date is required
+            </span>
+            <span ng-cloak class="error" ng-show="carSearchForm.endDate.$error.min && carSearchForm.$submitted">
+              End date must be after start date
             </span>
             <span ng-cloak class="error" ng-show="carSearchForm.dropOffTime.$error.required && carSearchForm.$submitted">
               End time is required
@@ -52,6 +57,9 @@
             </button>
           </div>
         </form>
+        <div ng-class="{'api-error-container': apiError}">
+          <span ng-cloak class="error" ng-class="{'api-error': apiError}">{{apiError}}</span>
+        </div>
       </div>
     </article>
 
@@ -60,7 +68,7 @@
         <div ng-class="{'loading-image': loading}">
         </div>
       </div>
-      <ul ng-class="{'available-cars': loaded}">
+      <ul ng-class="{'available-cars': !loading}">
         <li ng-cloak ng-repeat="car in carResults" class="car-result">
           <div class="car-result-image">
             <img ng-src="images/{{car.CarTypeCode}}.png" onerror="this.src='images/XXAR.png'" alt="car image">

@@ -126,6 +126,7 @@ article.rent-cars-search .form-container form div.search-button-container .rent-
   width: 182px;
 }
 
+div.api-error-container span.error
 article.rent-cars-search .form-container form div span.error {
   display: block;
   /*background-color: #CC0103;*/
@@ -142,7 +143,6 @@ article.rent-cars-results {
   background-color: #F8F8F8;
   /*background-color: #FFF;*/
   /*display: none;*/
-
   height: 100%;
 }
 
@@ -166,6 +166,10 @@ article.rent-cars-results .loading-container div.loading-image {
   background-repeat: no-repeat;
 }
 
+article.rent-cars-results .form-container div.api-error-container {
+  width: 100%;
+}
+
 .rent-cars-search-destination {
   width: auto;
   padding: 5px 10px;
@@ -176,6 +180,26 @@ article.rent-cars-results .loading-container div.loading-image {
 .rent-cars-search-end,
 .rent-cars-search-end-time {
   display: inline-block;
+}
+
+article.rent-cars-search .form-container form div input[type="date"],
+select.dropdown {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 2px;
+  border: none;
+  width: 74px;
+  font-family: helvetica;
+  outline: none;
+  padding: 5px;
+  width: auto;
+}
+article.rent-cars-search .form-container form div input[type="date"] {
+  /*width: 110px;*/
+}
+select.dropdown {
+  padding: 7px;
 }
 
 .rent-cars-results ul {
