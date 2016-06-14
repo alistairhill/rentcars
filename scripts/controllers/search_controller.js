@@ -83,7 +83,8 @@
         } else if (response.StatusCode === "100") {
           console.log(response.StatusDesc)
         } else {
-            console.log(response)
+          console.log(response)
+          response.Errors ? $scope.apiErrors = response.Errors : $scope.apiErrors = response.StatusDesc;
         }
 
       }, epicFail);

@@ -17,39 +17,48 @@
       </div>
       <div class="form-container">
         <form name="carSearchForm" ng-submit="carSearchForm.$valid && searchRentalCars()" novalidate>
-          <div class="destination-container">
-            <label for="destination">Destination</label>
-            <input class="destination" ng-model="searchInput.dest" type="text" required name="destination" placeholder="LAX, or San Francisco, CA etc." />
-            <span ng-cloak class="error" ng-show="carSearchForm.destination.$error.required && carSearchForm.$submitted">
-              A destinaton is required
-            </span>
-          </div>
-          <div class="start-time-container">
-            <label for="startDate">Pick up date</label>
-            <input class="date" ng-model="searchInput.startdate" min="{{minDate | date:'yyyy-MM-dd'}}" type="date" required name="startDate" />
-            <select class="dropdown" ng-options="hour as hour.label for hour in hoursList track by hour.time" ng-model="searchInput.pickuptime">
-            </select>
-            <span ng-cloak class="error" ng-show="carSearchForm.startDate.$error.required && carSearchForm.$submitted">
-              Start date is required
-            </span>
-            <span ng-cloak class="error" ng-show="carSearchForm.pickUpTime.$error.required && carSearchForm.$submitted">
-              Start time is required
-            </span>
-          </div>
-          <div class="end-time-container">
-            <label for="endDate">Drop off date</label>
-            <input class="date" ng-model="searchInput.enddate" min="{{searchInput.startdate | date:'yyyy-MM-dd'}}" type="date" required name="endDate" />
-            <select class="dropdown" ng-options="hour as hour.label for hour in hoursList track by hour.time" ng-model="searchInput.dropofftime">
-            </select>
-            <span ng-cloak class="error" ng-show="carSearchForm.endDate.$error.required && carSearchForm.$submitted">
-              End date is required
-            </span>
-            <span ng-cloak class="error" ng-show="carSearchForm.endDate.$error.min && carSearchForm.$submitted">
-              End date must be after start date
-            </span>
-            <span ng-cloak class="error" ng-show="carSearchForm.dropOffTime.$error.required && carSearchForm.$submitted">
-              End time is required
-            </span>
+          <div class="input-container">
+            <div class="destination-container">
+              <label for="destination">Destination</label>
+              <input class="destination" ng-model="searchInput.dest" type="text" required name="destination" placeholder="LAX, or San Francisco, CA etc." />
+            </div>
+            <div class="start-time-container">
+              <label for="startDate">Pick up date</label>
+              <input class="date" ng-model="searchInput.startdate" min="{{minDate | date:'yyyy-MM-dd'}}" type="date" required name="startDate" />
+              <select class="dropdown" ng-options="hour as hour.label for hour in hoursList track by hour.time" ng-model="searchInput.pickuptime">
+              </select>
+            </div>
+            <div class="end-time-container">
+              <label for="endDate">Drop off date</label>
+              <input class="date" ng-model="searchInput.enddate" min="{{searchInput.startdate | date:'yyyy-MM-dd'}}" type="date" required name="endDate" />
+              <select class="dropdown" ng-options="hour as hour.label for hour in hoursList track by hour.time" ng-model="searchInput.dropofftime">
+              </select>
+            </div>
+            <div class="error-container">
+              <span ng-cloak class="error" ng-show="carSearchForm.destination.$error.required && carSearchForm.$submitted">
+                A destinaton is required.
+              </span>
+              <span ng-cloak class="error" ng-show="carSearchForm.startDate.$error.required && carSearchForm.$submitted">
+                Start date is required.
+              </span>
+              <span ng-cloak class="error" ng-show="carSearchForm.pickUpTime.$error.required && carSearchForm.$submitted">
+                Start time is required.
+              </span>
+              <span ng-cloak class="error" ng-show="carSearchForm.endDate.$error.required && carSearchForm.$submitted">
+                End date is required.
+              </span>
+              <span ng-cloak class="error" ng-show="carSearchForm.dropOffTime.$error.required && carSearchForm.$submitted">
+                End time is required.
+              </span>
+              <span ng-cloak class="error" ng-show="carSearchForm.endDate.$error.min && carSearchForm.$submitted">
+                End date must be after start date.
+              </span>
+            </div>
+            <div ng-class="{'api-error-container': apiErrors}" ng-repeat="error in apiErrors">
+              <span ng-cloak class="error">
+                {{error.ErrorMessage}}
+              </span>
+            </div>
           </div>
           <div class="search-button-container">
             <button class="rent-cars-button" name="submit" type="submit">
@@ -57,9 +66,6 @@
             </button>
           </div>
         </form>
-        <div ng-class="{'api-error-container': apiError}">
-          <span ng-cloak class="error" ng-class="{'api-error': apiError}">{{apiError}}</span>
-        </div>
       </div>
     </article>
 
