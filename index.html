@@ -59,6 +59,11 @@
                 {{error.ErrorMessage}}
               </span>
             </div>
+            <div ng-class="{'api-error-container': otherError }">
+              <span ng-cloak class="error">
+                {{otherError}}
+              </span>
+            </div>
           <div class="search-button-container">
             <button class="rent-cars-button" name="submit" type="submit">
               Search!

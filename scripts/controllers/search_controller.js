@@ -11,7 +11,6 @@
     $scope.carResults = [];
     $scope.minStartDate = updateTimeFormat(currentTime(), nativeDatePickerFormat);
     $scope.searchRentalCars = searchRentalCars;
-      $scope.loading = true;
 
     function loadDefaultSearchInput() {
       $scope.searchInput.dest = "";
@@ -79,15 +78,11 @@
         $scope.loading = false;
 
         if (response.StatusCode === "0") {
-          console.log(response);
           $scope.carResults = parseResults.addCarType(response);
-        } else if (response.StatusCode === "100") {
-          console.log(response.StatusDesc)
         } else {
-          console.log(response)
-          response.Errors ? $scope.apiErrors = response.Errors : $scope.apiErrors = response.StatusDesc;
+          console.error(response);
+          response.Errors.length > 0 ? $scope.apiErrors = response.Errors : $scope.otherError = response.StatusDesc;
         }
-
       }, epicFail);
     }
 
