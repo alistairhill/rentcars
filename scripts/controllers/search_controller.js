@@ -81,14 +81,14 @@
           $scope.carResults = parseResults.addCarType(response);
         } else {
           console.error(response);
-          response.Errors.length > 0 ? $scope.apiErrors = response.Errors : $scope.otherError = response.StatusDesc;
+          response.Errors.length !== 0 ? $scope.apiErrors = response.Errors : $scope.singleError = response.StatusDesc;
         }
       }, epicFail);
     }
 
     function epicFail(response) {
       console.error(response);
+      response ? $scope.singleError = response : $scope.singleError = "Hotwire is feeling ill.";
     }
-
   });
 })();

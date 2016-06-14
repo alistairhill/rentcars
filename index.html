@@ -7,8 +7,6 @@
 <body ng-app="rentCars">
   <section class="rent-cars-background">
   </section>
-<!--   <section class="rent-cars-background-overlay">
-  </section> -->
   <section class="rent-cars" ng-controller="searchController">
     <article class="rent-cars-search">
       <div class="logo-container">
@@ -61,7 +59,7 @@
             </div>
             <div ng-class="{'api-error-container': otherError }">
               <span ng-cloak class="error">
-                {{otherError}}
+                {{singleError}}
               </span>
             </div>
           <div class="search-button-container">
@@ -74,7 +72,7 @@
       </div>
     </article>
 
-    <article class="rent-cars-results" ng-class="{'loading': loading}">
+    <article class="rent-cars-results">
       <div ng-class="{'loading-container': loading}">
         <div ng-class="{'loading-image': loading}">
         </div>
@@ -88,14 +86,12 @@
             <div class="header">
               <h2 class="car-type">{{car.CarTypeName}}</h2>
             </div>
+            <h5 class="car-type">{{car.PossibleModels}}</h5>
             <div>
-              <span>Car features: {{car.PossibleFeatures}}</span>
+              <span>Features: {{car.PossibleFeatures}}.</span>
             </div>
             <div>
-              <span>Possible models: {{car.PossibleModels}}</span>
-            </div>
-            <div>
-              <span>Typical seating: {{car.TypicalSeating}}</span>
+              <span>Should seat: {{car.TypicalSeating}}.</span>
             </div>
           </div>
           <div class="car-result-cost">
