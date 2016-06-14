@@ -11,6 +11,7 @@
     $scope.carResults = [];
     $scope.minStartDate = updateTimeFormat(currentTime(), nativeDatePickerFormat);
     $scope.searchRentalCars = searchRentalCars;
+      $scope.loading = true;
 
     function loadDefaultSearchInput() {
       $scope.searchInput.dest = "";

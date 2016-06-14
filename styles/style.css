@@ -106,6 +106,7 @@ form div input {
     border: 1px solid #D4CFCF;
     border: none;
     padding: 7px;
+    background-color: rgba(234, 231, 231, 1);
 }
 
 form div input.destination {
@@ -164,9 +165,10 @@ form div.search-button-container .rent-cars-button {
 }
 
 article.rent-cars-results {
-  background-color: #F8F8F8;
-  /*background-color: #FFF;*/
+  /*background-color: #F8F8F8;*/
+  background-color: rgba(234, 231, 231, 0.72);
   /*display: none;*/
+  border: 1px solid #FFF;
   height: 100%;
 }
 
@@ -181,6 +183,7 @@ article.rent-cars-results .loading-container {
   display: table;
   vertical-align: middle;
 }
+
 article.rent-cars-results .loading-container div.loading-image {
   width: 100%;
   display: table-cell;
@@ -236,6 +239,7 @@ select.dropdown {
   display: table;
   margin: 0 auto;
   background-color: #FFF;
+  background-color: rgba(234, 231, 231, 1);
 }
 
 .rent-cars-results ul > li {
@@ -246,8 +250,8 @@ li.car-result {
   width: 90%;
   margin: 20px auto;
   display: table;
-  border: 1px solid #D4CFCF;
-
+  /*border: 1px solid #D4CFCF;*/
+  border: 1px solid #FFF;
 }
 
 .car-result-image {
