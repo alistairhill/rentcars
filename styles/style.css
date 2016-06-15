@@ -135,7 +135,7 @@ form.car-search-form div input {
 }
 
 form.car-search-form div input.destination {
-  width: 179px;
+  width: 207px;
 }
 
 form.car-search-form div input.destination,
@@ -146,7 +146,7 @@ form.car-search-form div select {
 }
 
 form.car-search-form div input[type="date"],
-select.dropdown {
+form.car-search-form div select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -156,6 +156,11 @@ select.dropdown {
   outline: none;
   padding: 5px;
   width: auto;
+  font-size: 1em;
+}
+
+form.car-search-form div select {
+  padding: 7px;
 }
 
 form.car-search-form div.search-button-container {
@@ -163,8 +168,7 @@ form.car-search-form div.search-button-container {
 }
 
 form.car-search-form div.search-button-container .rent-cars-button {
-  width: 193px;
-  padding: 7px;
+  width: 100%;
 }
 
 [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -182,9 +186,10 @@ form.car-search-form div.api-error-container span.error {
   background-color: #FF7D19;
   text-align: center;
   border-radius: 2px;
-  width: 179px;
-  padding: 4px 7px;
+  width: 100%;
+  padding: 5px 0px;
   font-size: 0.9em;
+  margin: 1px 0;
 }
 form.car-search-form div.api-error-container span.error:first-letter,
 form.car-search-form div.error-container span.error:first-letter {
