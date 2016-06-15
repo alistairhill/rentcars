@@ -3,7 +3,7 @@
 
   angular.module("rentCars")
   .controller("searchController", function($scope, searchService, apiConstant,
-    parseResults, $filter, time) {
+    parseResults, time) {
 
     var nativeDatePickerFormat = "yyyy-MM-dd";
     $scope.searchInput = {};
