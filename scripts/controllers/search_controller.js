@@ -11,6 +11,7 @@
     $scope.carResults = [];
     $scope.minStartDate = updateTimeFormat(currentTime(), nativeDatePickerFormat);
     $scope.searchRentalCars = searchRentalCars;
+    $scope.displayResults = false;
 
     function loadDefaultSearchInput() {
       $scope.searchInput.dest = "";
@@ -27,11 +28,12 @@
     loadDefaultSearchInput();
 
     function makeHours() {
-      var amPmTimeFormat = "h:00 a";
       var currentTime = new Date();
       var timeObjects = [];
+      var amPmTimeFormat = "h:00 a";
+      var hoursInTheDay = 24;
       currentTime.setHours(0,0,0,0);
-      for (var i = 0; i < 24; i++) {
+      for (var i = 0; i < hoursInTheDay; i++) {
         var timeObj = {
           time: currentTime.setHours(i,0,0,0),
           label: updateTimeFormat(currentTime.setHours(i,0,0,0), amPmTimeFormat)
@@ -70,6 +72,7 @@
       // keeping $scope.searchInput in native date picker format
       var searchInputCopy = angular.copy($scope.searchInput);
       var hotwireFormattedInput = updateInputForApi(searchInputCopy);
+      $scope.displayResults = true;
 
       $scope.loading = true;
       $scope.carResults = [];

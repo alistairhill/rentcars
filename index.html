@@ -1,122 +1,137 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rent Cars</title>
+  <title>Car Rentals</title>
   <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 <body ng-app="rentCars">
+  <!-- background image -->
   <section class="rent-cars-background">
   </section>
-  <section class="rent-cars" ng-controller="searchController">
-    <article class="rent-cars-search">
-      <div class="logo-container">
-        <div class="logo">
-        </div>
+  <!-- header / nav -->
+  <header class="rent-cars-header">
+    <article class="logo-container">
+      <div class="logo">
       </div>
+    </article>
+    <nav class="rent-cars-nav">
+      <div class="nav-items">
+        <span>About</span>
+        <span>Something</span>
+      </div>
+    </nav>
+  </header>
+  <!-- main section -->
+  <section class="rent-cars" ng-controller="searchController">
+    <!-- car rental search box -->
+    <article class="rent-cars-search">
       <div class="form-container">
-        <form name="carSearchForm" ng-submit="carSearchForm.$valid && searchRentalCars()" novalidate>
-          <div class="input-container">
-            <div class="destination-container">
-              <label for="destination">Destination</label>
-              <input class="destination" ng-model="searchInput.dest" type="text" required name="destination" placeholder="LAX, or San Francisco, CA etc." />
-            </div>
-            <div class="start-time-container">
-              <label for="startDate">Pick up date</label>
-              <input class="date" ng-model="searchInput.startdate" min="{{minDate | date:'yyyy-MM-dd'}}" type="date" required name="startDate" />
-              <select class="dropdown" ng-options="hour as hour.label for hour in hoursList track by hour.time" ng-model="searchInput.pickuptime">
-              </select>
-            </div>
-            <div class="end-time-container">
-              <label for="endDate">Drop off date</label>
-              <input class="date" ng-model="searchInput.enddate" min="{{searchInput.startdate | date:'yyyy-MM-dd'}}" type="date" required name="endDate" />
-              <select class="dropdown" ng-options="hour as hour.label for hour in hoursList track by hour.time" ng-model="searchInput.dropofftime">
-              </select>
-            </div>
-            <div class="error-container">
-              <span ng-cloak class="error" ng-show="carSearchForm.destination.$error.required && carSearchForm.$submitted">
-                A destinaton is required.
-              </span>
-              <span ng-cloak class="error" ng-show="carSearchForm.startDate.$error.required && carSearchForm.$submitted">
-                Start date is required.
-              </span>
-              <span ng-cloak class="error" ng-show="carSearchForm.pickUpTime.$error.required && carSearchForm.$submitted">
-                Start time is required.
-              </span>
-              <span ng-cloak class="error" ng-show="carSearchForm.endDate.$error.required && carSearchForm.$submitted">
-                End date is required.
-              </span>
-              <span ng-cloak class="error" ng-show="carSearchForm.dropOffTime.$error.required && carSearchForm.$submitted">
-                End time is required.
-              </span>
-              <span ng-cloak class="error" ng-show="carSearchForm.endDate.$error.min && carSearchForm.$submitted">
-                End date must be after start date.
-              </span>
-            </div>
-            <div ng-class="{'api-error-container': apiErrors}" ng-repeat="error in apiErrors">
-              <span ng-cloak class="error">
-                {{error.ErrorMessage}}
-              </span>
-            </div>
-            <div ng-class="{'api-error-container': otherError }">
-              <span ng-cloak class="error">
-                {{singleError}}
-              </span>
-            </div>
+        <form class="car-search-form" name="carSearchForm" ng-submit="carSearchForm.$valid && searchRentalCars()" novalidate>
+          <div class="destination-container">
+            <label for="destination">Destination</label>
+            <input class="destination" ng-model="searchInput.dest" type="text" required name="destination" placeholder="LAX, or San Francisco, CA etc." />
+          </div>
+          <div class="start-time-container">
+            <label for="startDate">Pick up date</label>
+            <input class="date" ng-model="searchInput.startdate" min="{{minStartDate | date:'yyyy-MM-dd'}}" type="date" required name="startDate" />
+            <select class="dropdown" ng-options="hour as hour.label for hour in hoursList track by hour.time" ng-model="searchInput.pickuptime">
+            </select>
+          </div>
+          <div class="end-time-container">
+            <label for="endDate">Drop off date</label>
+            <input class="date" ng-model="searchInput.enddate" min="{{searchInput.startdate | date:'yyyy-MM-dd'}}" type="date" required name="endDate" />
+            <select class="dropdown" ng-options="hour as hour.label for hour in hoursList track by hour.time" ng-model="searchInput.dropofftime">
+            </select>
+          </div>
           <div class="search-button-container">
             <button class="rent-cars-button" name="submit" type="submit">
               Search!
             </button>
           </div>
+          <div ng-cloak class="error-container">
+            <span ng-cloak class="error" ng-show="carSearchForm.destination.$error.required && carSearchForm.$submitted">
+              A destinaton is required.
+            </span>
+            <span ng-cloak class="error" ng-show="carSearchForm.startDate.$error.required && carSearchForm.$submitted">
+              Start date is required.
+            </span>
+            <span ng-cloak class="error" ng-show="carSearchForm.pickUpTime.$error.required && carSearchForm.$submitted">
+              Start time is required.
+            </span>
+            <span ng-cloak class="error" ng-show="carSearchForm.endDate.$error.required && carSearchForm.$submitted">
+              End date is required.
+            </span>
+            <span ng-cloak class="error" ng-show="carSearchForm.dropOffTime.$error.required && carSearchForm.$submitted">
+              End time is required.
+            </span>
+            <span ng-cloak class="error" ng-show="carSearchForm.startDate.$error.min && carSearchForm.$submitted">
+              Start date cannot be before today.
+            </span>
+            <span ng-cloak class="error" ng-show="carSearchForm.endDate.$error.min && carSearchForm.$submitted">
+              End date must be after start date.
+            </span>
+          </div>
+          <div ng-cloak ng-if="apiErrors" ng-class="{'api-error-container': apiErrors}" ng-repeat="error in apiErrors">
+            <span ng-cloak class="error">
+              {{error.ErrorMessage}}
+            </span>
+          </div>
+          <div ng-cloak ng-if="otherError" ng-class="{'api-error-container': otherError }">
+            <span ng-cloak class="error">
+              {{singleError}}
+            </span>
           </div>
         </form>
       </div>
     </article>
-
+    <!-- car rental results -->
     <article class="rent-cars-results">
-      <div ng-class="{'loading-container': loading}">
+      <div ng-cloak ng-if="loading" ng-class="{'loading-container': loading}">
         <div ng-class="{'loading-image': loading}">
         </div>
       </div>
-      <ul ng-class="{'available-cars': !loading}">
-        <li ng-cloak ng-repeat="car in carResults" class="car-result">
-          <div class="car-result-image">
-            <img ng-src="images/{{car.CarTypeCode}}.png" onerror="this.src='images/XXAR.png'" alt="car image">
-          </div>
-          <div class="car-result-info">
-            <div class="header">
-              <h2 class="car-type">{{car.CarTypeName}}</h2>
+      <div class="results-container" ng-if="displayResults">
+        <ul ng-class="{'available-cars': !loading}">
+          <li ng-cloak ng-repeat="car in carResults" class="car-result">
+            <div class="car-result-image">
+              <img ng-src="images/{{car.CarTypeCode}}.png" onerror="this.src='images/XXAR.png'" alt="car image">
             </div>
-            <h5 class="car-type">{{car.PossibleModels}}</h5>
-            <div>
-              <span>Features: {{car.PossibleFeatures}}.</span>
+            <div class="car-result-info">
+              <div class="header">
+                <h2 class="car-type">{{car.CarTypeName}}</h2>
+              </div>
+              <h5 class="car-type">{{car.PossibleModels}}</h5>
+              <div>
+                <span>Features: {{car.PossibleFeatures}}.</span>
+              </div>
+              <div>
+                <span>Should seat: {{car.TypicalSeating}}.</span>
+              </div>
             </div>
-            <div>
-              <span>Should seat: {{car.TypicalSeating}}.</span>
+            <div class="car-result-cost">
+              <div class="header">
+                <h2 class="daily-rate-title">BEST DAILY RATE</h2>
+                <span class="daily-rate-price">${{car.DailyRate}}</span>
+                <span class="currency-code">{{car.CurrencyCode}}</span>
+              </div>
+              <div>
+                <span class="fees">Fees: ${{car.TaxesAndFees}}</span>
+                <span class="currency-code">{{car.CurrencyCode}}</span>
+              </div>
+              <div>
+                <span class="total">Total: ${{car.TotalPrice}}</span>
+                <span class="currency-code">{{car.CurrencyCode}}</span>
+              </div>
+              <div>
+                <a class="rent-cars-button" href="{{car.DeepLink}}" target="_blank">Book Now!</a>
+              </div>
             </div>
-          </div>
-          <div class="car-result-cost">
-            <div class="header">
-              <h2 class="daily-rate-title">BEST DAILY RATE</h2>
-              <span class="daily-rate-price">${{car.DailyRate}}</span>
-              <span class="currency-code">{{car.CurrencyCode}}</span>
-            </div>
-            <div>
-              <span class="fees">Fees: ${{car.TaxesAndFees}}</span>
-              <span class="currency-code">{{car.CurrencyCode}}</span>
-            </div>
-            <div>
-              <span class="total">Total: ${{car.TotalPrice}}</span>
-              <span class="currency-code">{{car.CurrencyCode}}</span>
-            </div>
-            <div>
-              <a class="pay-now-button rent-cars-button" href="{{car.TypicalSeating}}">Buy Now!</a>
-            </div>
-          </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </div>
     </article>
   </section>
-
+  <!-- javascripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
   <script src="scripts/app.js"></script>
   <script src="scripts/controllers/search_controller.js"></script>
