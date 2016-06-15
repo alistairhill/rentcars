@@ -20,7 +20,6 @@
             results[i].PossibleModels = carType.PossibleModels;
             results[i].TypicalSeating = carType.TypicalSeating;
           }
-
         } else {
           return data.Result;
         }
