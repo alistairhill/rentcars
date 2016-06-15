@@ -2,12 +2,12 @@
   'use strict';
 
   angular.module("rentCars")
-  .controller("searchController", function($scope, searchSerice, apiConstant, parseResults, $filter) {
+  .controller("searchController", function($scope, searchService, apiConstant, parseResults, $filter) {
 
     var nativeDatePickerFormat = "yyyy-MM-dd";
 
     $scope.searchInput = {};
-    $scope.hoursList = makeHours();
+    $scope.hoursList = makeHoursList();
     $scope.carResults = [];
     $scope.minStartDate = updateTimeFormat(currentTime(), nativeDatePickerFormat);
     $scope.searchRentalCars = searchRentalCars;
@@ -27,7 +27,7 @@
 
     loadDefaultSearchInput();
 
-    function makeHours() {
+    function makeHoursList() {
       var currentTime = new Date();
       var timeObjects = [];
       var amPmTimeFormat = "h:00 a";
@@ -73,11 +73,10 @@
       var searchInputCopy = angular.copy($scope.searchInput);
       var hotwireFormattedInput = updateInputForApi(searchInputCopy);
       $scope.displayResults = true;
-
       $scope.loading = true;
       $scope.carResults = [];
 
-      searchSerice.getCarRentals(hotwireFormattedInput, apiConstant).then(function successHandler(response) {
+      searchService.getCarRentals(hotwireFormattedInput, apiConstant).then(function successHandler(response) {
         $scope.loading = false;
 
         if (response.StatusCode === "0") {

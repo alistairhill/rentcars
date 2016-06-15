@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module("rentCars")
-  .service("searchSerice", function($q, $http, $httpParamSerializer) {
+  .service("searchService", function($q, $http, $httpParamSerializer) {
 
     this.getCarRentals = function(searchInput, apiConstant) {
       var deferred = $q.defer();

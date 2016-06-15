@@ -347,4 +347,39 @@ li.car-result .car-result-cost div span.total {
   article.rent-cars-results .results-container ul.available-cars {
     width: 100%;
   }
+
+  section.rent-cars article.rent-cars-search .form-container {
+    width: 100%;
+    border-radius: 0;
+    margin: 0px auto;
+  }
+
+  form.car-search-form div.search-button-container {
+    width: 200px;
+  }
+
+  form.car-search-form div {
+    margin: 0 auto;
+    width: 200px;
+  }
+
+  form.car-search-form div.search-button-container .rent-cars-button {
+    font-size: 1.5em;
+    height: 40px;
+  }
+
+  li.car-result .rent-cars-button {
+    font-size: 1.1em;
+    height: 40px;
+  }
+
+  .car-result-cost div a.rent-cars-button span {
+    display: block;
+    padding: 7px;
+  }
+
+  form.car-search-form div input.destination {
+    height: 20px;
+  }
 }
+
